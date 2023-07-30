@@ -4,21 +4,19 @@ from sqlalchemy.orm import sessionmaker
 from common.configuration import POSTGRESDB
 
 
-#SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 POSTGRESDB = POSTGRESDB()
-SQLALCHEMY_DATABASE_URL = "postgresql://"+ POSTGRESDB.POSTGRES_USERNAME +":"+ POSTGRESDB.PASSWORD.replace("@", "%40") +"@"+ POSTGRESDB.HOST +"/" + POSTGRESDB.SCHEMA 
-
-print(SQLALCHEMY_DATABASE_URL)
+SQLALCHEMY_DATABASE_URL_LOCAL = "postgresql://"+ POSTGRESDB.USERNAME1 +":"+ POSTGRESDB.PASSWORD +"@"+ POSTGRESDB.HOST +"/" + POSTGRESDB.SCHEMA
+print(SQLALCHEMY_DATABASE_URL_LOCAL)
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,pool_size=20, max_overflow=30
+    SQLALCHEMY_DATABASE_URL_LOCAL,pool_size=20, max_overflow=30
 )
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal_db = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
 def get_db():
-    db = SessionLocal()
+    db = SessionLocal_db()
     try:
         yield db
     finally:
-        db.close()
+        db.close() 

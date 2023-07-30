@@ -4,14 +4,17 @@ from sqlalchemy.orm import relationship
 
 from storage.database import Base
 
-class CFDResults(Base):
-    __tablename__ = "an_cfd_results"
+class User(Base):
+    __tablename__ = "user_tbls"  
 
     id = Column(Integer, primary_key=True, index=True)
-    imo =  Column (String)
-    draft =  Column (String)
-    speed =  Column (String)
-    trim =  Column (String)
-    resistance =  Column (String)
-    power =  Column (String)
+    username =  Column (String)
+    password =  Column (String)
+    email =  Column (String)
+    status =  Column (String)
+    mobile_no =  Column (Integer)
+    type =  Column (String)
+    block =  Column (String)
+    times =  Column (Integer) 
+    block_date_time =  Column (Date) 
     

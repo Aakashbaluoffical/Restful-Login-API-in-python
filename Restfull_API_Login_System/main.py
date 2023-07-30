@@ -1,7 +1,8 @@
 from fastapi import FastAPI , Request
 from fastapi.middleware.cors import CORSMiddleware
+from routers import login_system
 import json
-from routers import trim
+
 
 
 
@@ -25,12 +26,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# app.include_router(cache_reset.router)
-app.include_router(trim.router)
+app.include_router(login_system.router)
+
 
 @app.get('/')
 def about():
     return {'data':{'name': "System API for Enterprise app.","version":"1.0" }}
+
+
+
 
 if __name__ == "__main__":
     print("MAIN")
