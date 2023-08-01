@@ -37,3 +37,8 @@ def update_times_after(db:Session,username):
     update = db.query(properties_models.User).filter(properties_models.User.username == username).update({'times':'3'})
     db.commit()
     return update
+
+def update_block(db:Session,username):
+    update = db.query(properties_models.User).filter(properties_models.User.username == username).update({'block':'block'})
+    db.commit()
+    return update
