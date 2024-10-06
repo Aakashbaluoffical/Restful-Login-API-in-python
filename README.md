@@ -1,3 +1,7 @@
+
+https://www.youtube.com/watch?v=FlxsJexhZuI&ab_channel=Bridgeon
+
+
 # FastAPI Login and OTP Verification System
 
 This project is a FastAPI-based system for user login and authentication via OTP (One-Time Password). It integrates Twilio for sending OTPs via SMS and provides email OTP functionality using SMTP. The project uses SQLAlchemy for database interactions and JWT (JSON Web Token) for user authentication.
