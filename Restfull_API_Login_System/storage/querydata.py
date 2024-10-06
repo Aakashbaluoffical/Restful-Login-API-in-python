@@ -13,6 +13,9 @@ from models import properties_models
 def check_user(db:Session,username):
     return db.query(properties_models.User).filter(properties_models.User.username == username).first()
 
+def check_user_email(db:Session,email):
+    return db.query(properties_models.User).filter(properties_models.User.email == email).first()
+
 
 def check_user_pass(db:Session,username,password):
     return db.query(properties_models.User).filter(properties_models.User.username == username,properties_models.User.password == password).first()
