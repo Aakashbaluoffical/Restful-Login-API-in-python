@@ -1,5 +1,6 @@
 
-https://www.youtube.com/watch?v=FlxsJexhZuI&ab_channel=Bridgeon
+## Video Preview 
+https://youtu.be/OwYYTjJkwF0
 
 
 # FastAPI Login and OTP Verification System
