@@ -1,0 +1,9 @@
+#file helps to exclude unnecessary files from being copied into the container.
+
+
+
+__pycache__
+*.pyc
+*.pyo
+*.log
+.env

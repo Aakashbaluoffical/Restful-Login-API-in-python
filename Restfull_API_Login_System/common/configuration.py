@@ -1,8 +1,8 @@
 from pydantic import BaseSettings
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 
-load_dotenv()
+# load_dotenv()
 
   
 
@@ -21,10 +21,10 @@ class POSTGRESDB(BaseSettings):
     SCHEMA: str = 'local_client'
     
   
-class TWILIO_CRED(BaseSettings):
-    ACCOUNT_SID = os.getenv("ACCOUNT_SID")
-    AUTH_TOKEN = os.getenv("AUTH_TOKEN")
-    YOUR_TWILIO_PHONE_NUMBER = os.getenv("YOUR_TWILIO_PHONE_NUMBER")    
+# class TWILIO_CRED(BaseSettings):
+#     ACCOUNT_SID = os.getenv("ACCOUNT_SID")
+#     AUTH_TOKEN = os.getenv("AUTH_TOKEN")
+#     YOUR_TWILIO_PHONE_NUMBER = os.getenv("YOUR_TWILIO_PHONE_NUMBER")    
 
 # # class STRAPIDB(BaseSettings):
 # #     URL: str =  os.environ["STRAPI_URL"]

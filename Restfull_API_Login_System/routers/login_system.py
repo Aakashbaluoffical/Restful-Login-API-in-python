@@ -8,7 +8,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials #jwt
 from twilio.rest import Client
-from common.configuration import TWILIO_CRED
+# from common.configuration import TWILIO_CRED
 import json
 import smtplib
 import logging
@@ -25,14 +25,14 @@ router = APIRouter(prefix="",
                    tags=["Login"])
 
 
-TWILIO_CRED = TWILIO_CRED()
+# TWILIO_CRED = TWILIO_CRED()
 
 
 
 # ============== Twilio =============================
-client = Client(TWILIO_CRED.ACCOUNT_SID,TWILIO_CRED.AUTH_TOKEN)
-print(f"Twilio cred: Account sid: {TWILIO_CRED.ACCOUNT_SID}, Token: {TWILIO_CRED.AUTH_TOKEN}, Mobile number : {TWILIO_CRED.YOUR_TWILIO_PHONE_NUMBER}")
-# -------------
+# client = Client(TWILIO_CRED.ACCOUNT_SID,TWILIO_CRED.AUTH_TOKEN)
+# print(f"Twilio cred: Account sid: {TWILIO_CRED.ACCOUNT_SID}, Token: {TWILIO_CRED.AUTH_TOKEN}, Mobile number : {TWILIO_CRED.YOUR_TWILIO_PHONE_NUMBER}")
+# # -------------
 
 def genarate_otp(Length=6):
    otp = random.randint(10**(Length-1), (10**Length)-1)
@@ -41,17 +41,17 @@ def genarate_otp(Length=6):
 def send_otp(user_mobile_number):
     otp = genarate_otp()
     print("OTP:",otp)
-    print("TWILIO_CRED.YOUR_TWILIO_PHONE_NUMBER:",TWILIO_CRED.YOUR_TWILIO_PHONE_NUMBER)
+    # print("TWILIO_CRED.YOUR_TWILIO_PHONE_NUMBER:",TWILIO_CRED.YOUR_TWILIO_PHONE_NUMBER)
     print("user_mobile_number:",user_mobile_number)
 
 
     
     
-    message = client.messages.create(
-        body=f'Your OTP is {otp}.',
-        from_=TWILIO_CRED.YOUR_TWILIO_PHONE_NUMBER,
-        to=f"+91{user_mobile_number}"
-    )
+    # message = client.messages.create(
+    #     body=f'Your OTP is {otp}.',
+    #     from_=TWILIO_CRED.YOUR_TWILIO_PHONE_NUMBER,
+    #     to=f"+91{user_mobile_number}"
+    # )
     print(f"OTP sent to {user_mobile_number}: {otp}")
     return otp
     
@@ -212,4 +212,9 @@ def login(user_mobile_number:str = None,otp:int = None, db:Session = Depends(get
             return response
         else:
             return JSONResponse(status_code=400,content={"data": "Mobile no: less than 10 digit"})
-   
+
+
+
+@router.get('/test')
+def about():
+    return {'data':{'name': "Test api inside routers","version":"1.0" }} 

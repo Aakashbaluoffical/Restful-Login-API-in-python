@@ -34,8 +34,17 @@ def about():
     return {'data':{'name': "System API for Enterprise app.","version":"1.0" }}
 
 
+@app.get('/app')
+def about():
+    return {'data':{'name': "Login System.","version":"1.0" }}    
+
+@app.get('/show')
+def about():
+    return {'data':{'name': "Docker is working","version":"1.0" }} 
 
 
 if __name__ == "__main__":
     print("MAIN")
+    import uvicorn
     #uvicorn.run(app,host="127.0.0.1", port=9000)
+    uvicorn.run(app, host="0.0.0.0", port=9000)
